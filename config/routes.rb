@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   root 'posts#index'
   
   post 'comments/:id' => 'comments#create'
+  # post 'posts/:post_id/comments' => 'comments#create'
 
   get 'posts/index'
+  # get 'posts' => 'posts#index'
 
   post 'posts' => 'posts#create'
 
   get 'users/index'
+  # get 'users' => 'users#index'  (reserve `index` for list of users -- call this users#login maybe?)
 
   post 'users' => 'users#create'
 
