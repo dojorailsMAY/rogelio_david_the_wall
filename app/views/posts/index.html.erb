@@ -1,0 +1,31 @@
+<h1>THE WALL</h1>
+<p>Hi, <%= @user.name %></p> 
+<a href="/users/logout">Logout</a>
+
+<form action="/posts" method="POST">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<textarea name="content" id="" cols="30" rows="10" placeholder="Add a post"></textarea>
+<input type="submit" value="Post">
+
+</form>
+
+<% @posts.each do |post| %>
+    <h3><%= post.content %></h3>
+    
+    <form action="/comments/<%= post.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        
+        <% post.comments.each do |comment| %>
+        <h5><%= comment.content %></h5>
+        <% end %>
+        
+        <input type="text" name="content" placeholder="Comment">
+        <input type="submit" value="Comment">
+    </form>
+    
+    
+
+    
+    <hr>
+<% end %>
+
